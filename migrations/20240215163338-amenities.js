@@ -1,7 +1,7 @@
 module.exports = {
   async up(db) {
     return db
-      .collection('amenity')
+      .collection('amenities')
       .insertMany([
         { name: 'Swimming Pool' },
         { name: 'Gym' },
