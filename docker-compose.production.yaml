@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  reservations-api-mongo:
+    image: 'mongo:latest'
+    restart: always
+    ports:
+      - '127.0.0.1:28030:27017'
+    volumes:
+      - data-volume:/data/db
+  reservations-api-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - '127.0.0.1:5077:5077'
+    depends_on:
+      - reservations-api-mongo
+    env_file: .env
+    volumes:
+      - ./src:/reservations-app/src
+      - ./dist:/reservations-app/dist
+volumes:
+  data-volume:

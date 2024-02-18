@@ -1,0 +1,11 @@
+{
+    "name": "Reservations-Api-Service",
+    "script": "./dist/main.js",
+    "instances": "max",
+    "exec_mode": "cluster",
+    "log_file": "./logs/prod.log",
+    "env": {
+        "NODE_ENV": "production",
+        "port": 5077
+    }
+  }

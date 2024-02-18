@@ -6,6 +6,12 @@ case "$1" in
 
         docker-compose build && docker-compose up -d  --remove-orphans
         ;;
+
+    prod)
+        docker-compose stop
+
+        docker-compose --file docker-compose.production.yaml build && docker-compose --file docker-compose.production.yaml up -d  --remove-orphans
+        ;;
     logs)
         docker-compose logs --tail 30 -f reservations-api-service
         ;;
