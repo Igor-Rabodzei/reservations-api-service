@@ -3,7 +3,7 @@
 ## Environment variables
 
 ```bash
-# Need to fill dev.env file or create .env and fill it
+# Fill all env variables which are written in file .env-example and put them in file .env
 MONGO_CONNECTION_URL=""
 JWT_ACCESS_TOKEN_SECRET=""
 ```
