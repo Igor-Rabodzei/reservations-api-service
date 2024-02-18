@@ -19,8 +19,8 @@ export class Reservation {
   @Prop({ required: true })
   endTime: number;
 
-  @Prop({ required: true })
-  reservationDate: Date;
+  @Prop({ required: true, timestamps: true, index: true })
+  reservationDate: string;
 }
 
 export const ReservationsSchema = SchemaFactory.createForClass(Reservation);

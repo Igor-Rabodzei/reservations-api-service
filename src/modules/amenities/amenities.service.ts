@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Types } from 'mongoose';
+import { Model } from 'mongoose';
 
 import { AmenityDocument, Amenity } from 'src/schemas/amenity.schema';
 
@@ -11,9 +11,9 @@ export class AmenitiesService {
     private amenityModel: Model<AmenityDocument>,
   ) {}
 
-  async getAmenityById(amenityId: string) {
+  async getAmenityByName(amenityName: string) {
     return await this.amenityModel.findOne({
-      _id: new Types.ObjectId(amenityId),
+      name: amenityName,
     });
   }
 }
