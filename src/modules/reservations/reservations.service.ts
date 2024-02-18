@@ -1,4 +1,4 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Types } from 'mongoose';
@@ -16,6 +16,8 @@ import { AmenityDocument } from 'src/schemas/amenity.schema';
 
 @Injectable()
 export class ReservationsService {
+  private logger = new Logger(ReservationsService.name);
+
   constructor(
     @InjectModel(Reservation.name)
     private reservationModel: Model<ReservationDocument>,
@@ -52,6 +54,7 @@ export class ReservationsService {
 
       return result;
     } catch (err) {
+      this.logger.error(`Search reservations. Error: ${err}`);
       throw new HttpException(
         'An error occurred while processing your request.',
         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -76,6 +79,7 @@ export class ReservationsService {
       ]);
       return reservations;
     } catch (err) {
+      this.logger.error(`Get reservations by user id. Error: ${err}`);
       throw new HttpException(
         'An error occurred while processing your request.',
         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -113,6 +117,7 @@ export class ReservationsService {
 
       return reservation;
     } catch (err) {
+      this.logger.error(`Create reservation. Error: ${err}`);
       throw new HttpException(
         'An error occurred while processing your request.',
         HttpStatus.INTERNAL_SERVER_ERROR,

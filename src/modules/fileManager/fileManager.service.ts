@@ -1,13 +1,16 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { createReadStream, unlinkSync } from 'node:fs';
 import { parse, Row } from '@fast-csv/parse';
 
 @Injectable()
 export class FileManagerService {
+  private logger = new Logger(FileManagerService.name);
+
   async deleteTmpFile(filePath): Promise<void> {
     try {
       unlinkSync(filePath);
     } catch (err) {
+      this.logger.error(`Delete tmp file. Error: ${err}`);
       throw new HttpException('Upload file error', HttpStatus.BAD_REQUEST);
     }
   }
@@ -38,6 +41,7 @@ export class FileManagerService {
 
       return JSON.parse(JSON.stringify(csvRows));
     } catch (err) {
+      this.logger.error(`Parse file. Error: ${err}`);
       throw new HttpException('Upload file error', HttpStatus.BAD_REQUEST);
     }
   }

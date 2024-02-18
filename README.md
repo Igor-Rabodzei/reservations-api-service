@@ -31,7 +31,6 @@ $ docker exec -it reservations-api-reservations-api-service-1 migrate-mongo up
 migrations/
 config/
 src/
-  ├─ config/
   ├─ common/
   ├─ modules/
   ├─ schemas/
