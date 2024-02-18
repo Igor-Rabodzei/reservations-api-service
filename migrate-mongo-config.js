@@ -2,19 +2,11 @@
 
 const config = {
   mongodb: {
-    // TODO Change (or review) the url to your MongoDB:
-    // url: 'mongodb://localhost:28030',
     url: process.env.MONGO_CONNECTION_URL,
-    // 'mongodb://reservations-api-mongo',
-
-    // TODO Change this to your database name:
     databaseName: 'reservations-api-service',
 
     options: {
-      // useNewUrlParser: true, // removes a deprecation warning when connecting
       useUnifiedTopology: true, // removes a deprecating warning when connecting
-      //   connectTimeoutMS: 3600000, // increase connection timeout to 1 hour
-      //   socketTimeoutMS: 3600000, // increase socket timeout to 1 hour
     },
   },
 
